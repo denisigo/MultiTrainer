@@ -1,0 +1,36 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+    </style>
+    
+    <style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/actionbar_background</item>
+    </style>
+
+    <style name="timer">
+        <item name="android:textColor">#eeffffff</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    
+    <style name="timerButton">
+        <item name="android:background">@drawable/timer_button</item>
+    </style>
+    
+    <style name="equation">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="numberButton">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/number_button</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+    </style>
+    
+</resources>

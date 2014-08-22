@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:state_checked="false" android:state_pressed="true">
+        <layer-list>
+	        <item>
+	        	<shape android:shape="oval">
+	            	<solid android:color="#55ffffff" />
+	        	</shape>
+	        </item>
+	        <item android:left="5dp">
+	        	<bitmap android:src="@drawable/ic_action_play" android:gravity="center"> </bitmap>
+	        </item>
+	        <item>
+		        <shape android:shape="ring" android:innerRadius="20dp" android:thickness="2dp" android:useLevel="false">
+		            <solid android:color="#eeffffff" />
+		        </shape>
+	        </item>
+        </layer-list>
+
+   	</item>
+
+    <item android:state_checked="false">
+        <layer-list>
+            <item android:left="5dp">
+        		<bitmap android:src="@drawable/ic_action_play" android:gravity="center"> </bitmap>
+        	</item>
+        	<item>
+        		<shape android:shape="ring" android:innerRadius="20dp" android:thickness="2dp" android:useLevel="false">
+            		<solid android:color="#eeffffff"/>
+		        </shape>
+		    </item>
+        </layer-list>
+   	</item>
+        
+    
+    <item android:state_checked="true" android:state_pressed="true">
+ 		<layer-list>
+ 		    <item>
+	        	<shape android:shape="oval">
+	            	<solid android:color="#55ffffff" />
+	        	</shape>
+	        </item>
+            <item>
+        		<bitmap android:src="@drawable/ic_action_stop" android:gravity="center"> </bitmap>
+        	</item>
+        	<item>
+        		<shape android:shape="ring" android:innerRadius="20dp" android:thickness="2dp" android:useLevel="false">
+            		<solid android:color="#eeffffff"/>
+        		</shape>
+        	</item>
+        </layer-list>
+  	</item>
+        
+    <item android:state_checked="true">
+ 		<layer-list>
+            <item>
+        		<bitmap android:src="@drawable/ic_action_stop" android:gravity="center"> </bitmap>
+        	</item>
+        	<item>
+        		<shape android:shape="ring" android:innerRadius="20dp" android:thickness="2dp" android:useLevel="false">
+            		<solid android:color="#eeffffff"/>
+        		</shape>
+        	</item>
+        </layer-list>
+  	</item>
+
+</selector>

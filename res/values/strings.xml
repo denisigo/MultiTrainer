@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Multiplication Trainer</string>
+    <string name="sharetext">"Wow! I've multiplied %d equations per a minute in Multiplication Trainer app - https://play.google.com/store/apps/details?id=com.denisigo.multitrainer"</string>
+    <string name="appsharetext">"I'm playing Multiplication Trainer, can you bet my score? - https://play.google.com/store/apps/details?id=com.denisigo.multitrainer"</string>
+    <string name="paused">Paused</string>
+    <string name="paused_message">Timer has been paused.</string>
+    <string name="close">Close</string>
+    <string name="resume">Resume</string>
+    <string name="share">Share</string>
+    <string name="save_score">Save score</string>
+    <string name="time_is_up">Time is up</string>
+    <string name="timeisup_message">You have multiplied %d equations per a minute!</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="share_app">Share app</string>
+    <string name="achievements">Achievements</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
+    
+
+</resources>
