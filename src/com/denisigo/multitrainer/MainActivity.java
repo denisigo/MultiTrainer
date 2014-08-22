@@ -55,7 +55,7 @@ public class MainActivity extends BaseGameActivity implements
 	private int mSolvedCount;
 	// Counter for seconds
 	private int mCountDown;
-	// Fully-formatted string of equation - 23x43=
+	// Fully-formatted string of equation - 2x3=
 	private String mEquation;
 	// String for accumulating the answer
 	private String mAnswer;
@@ -308,7 +308,7 @@ public class MainActivity extends BaseGameActivity implements
 				showLeaderboard();
 			} else if (id == NAVDRAWER_ACHIEVEMENTS) {
 				showAchievements();
-			} else if (id == NAVDRAWER_SHAREAPP){
+			} else if (id == NAVDRAWER_SHAREAPP) {
 				Intent sendIntent = new Intent();
 				sendIntent.setAction(Intent.ACTION_SEND);
 				sendIntent.putExtra(Intent.EXTRA_TEXT,
@@ -326,11 +326,11 @@ public class MainActivity extends BaseGameActivity implements
 	 */
 	private void updateNavigationDrawer() {
 		ArrayList<NavDrawerItem> drawerItems = new ArrayList<NavDrawerItem>();
-		
+
 		// Show sign in item if we're not logged in
 		if (!isSignedIn()) {
-			drawerItems.add(new NavDrawerIconItem(NAVDRAWER_SIGNIN, getString(R.string.sign_in),
-					R.drawable.ic_gplus));
+			drawerItems.add(new NavDrawerIconItem(NAVDRAWER_SIGNIN,
+					getString(R.string.sign_in), R.drawable.ic_gplus));
 		} else {
 			// Else show user profile item
 			Player p = Games.Players.getCurrentPlayer(getApiClient());
@@ -342,35 +342,41 @@ public class MainActivity extends BaseGameActivity implements
 				mOnProfileImageLoadedlistener = new OnProfileImageLoadedListener();
 				im.loadImage(mOnProfileImageLoadedlistener, icon);
 			}
-			
-			drawerItems.add(new NavDrawerUserItem(-1, displayName, R.drawable.ic_action_person, R.drawable.profile_cover));
+
+			drawerItems.add(new NavDrawerUserItem(-1, displayName,
+					R.drawable.ic_action_person, R.drawable.profile_cover));
 		}
-		
+
 		drawerItems.add(new NavDrawerIconItem(NAVDRAWER_LEADERBOARD,
 				getString(R.string.leaderboard), R.drawable.ic_leaderboard));
 		drawerItems.add(new NavDrawerIconItem(NAVDRAWER_ACHIEVEMENTS,
 				getString(R.string.achievements), R.drawable.ic_achievements));
-		drawerItems.add(new NavDrawerIconItem(NAVDRAWER_SHAREAPP, getString(R.string.share_app),
-				R.drawable.ic_action_share));
-		
+		drawerItems.add(new NavDrawerIconItem(NAVDRAWER_SHAREAPP,
+				getString(R.string.share_app), R.drawable.ic_action_share));
+
 		if (isSignedIn()) {
-			drawerItems.add(new NavDrawerIconItem(NAVDRAWER_SIGNOUT,
-					getString(R.string.sign_out), R.drawable.ic_lock_power_off));
+			drawerItems
+					.add(new NavDrawerIconItem(NAVDRAWER_SIGNOUT,
+							getString(R.string.sign_out),
+							R.drawable.ic_lock_power_off));
 		}
 		mDrawerAdapter.setItems(drawerItems);
 	}
-	
+
 	/**
 	 * Callback for ImageManager on profile image loaded.
 	 */
-	private class OnProfileImageLoadedListener implements ImageManager.OnImageLoadedListener{
+	private class OnProfileImageLoadedListener implements
+			ImageManager.OnImageLoadedListener {
 		@Override
 		public void onImageLoaded(Uri uri, Drawable drawable,
 				boolean isRequestedDrawable) {
-			// First item in list should be user profile item, but let's check it
+			// First item in list should be user profile item, but let's check
+			// it
 			Object item = mDrawerAdapter.getItem(0);
 			if (item.getClass() == NavDrawerUserItem.class)
-				((NavDrawerUserItem)mDrawerAdapter.getItem(0)).setIcon(drawable);
+				((NavDrawerUserItem) mDrawerAdapter.getItem(0))
+						.setIcon(drawable);
 		}
 	}
 
@@ -447,8 +453,10 @@ public class MainActivity extends BaseGameActivity implements
 
 		Random rnd = new Random();
 
-		int operand1 = rnd.nextInt(MAX_OPERAND1 - MIN_OPERAND1 + 1) + MIN_OPERAND1;
-		int operand2 = rnd.nextInt(MAX_OPERAND2 - MIN_OPERAND2 + 1) + MIN_OPERAND2;
+		int operand1 = rnd.nextInt(MAX_OPERAND1 - MIN_OPERAND1 + 1)
+				+ MIN_OPERAND1;
+		int operand2 = rnd.nextInt(MAX_OPERAND2 - MIN_OPERAND2 + 1)
+				+ MIN_OPERAND2;
 
 		mResult = operand1 * operand2;
 
@@ -587,6 +595,28 @@ public class MainActivity extends BaseGameActivity implements
 		Games.Leaderboards.submitScore(getApiClient(),
 				getString(R.string.leaderboard_id), mSolvedCount);
 
+		// Unlock the achievements
+		if (mSolvedCount >= 10) {
+			Games.Achievements.unlock(getApiClient(),
+					getString(R.string.achievement_10_epm));
+		} 
+		if (mSolvedCount >= 20) {
+			Games.Achievements.unlock(getApiClient(),
+					getString(R.string.achievement_20_epm));
+		}
+		if (mSolvedCount >= 30) {
+			Games.Achievements.unlock(getApiClient(),
+					getString(R.string.achievement_30_epm));
+		}
+		if (mSolvedCount >= 40) {
+			Games.Achievements.unlock(getApiClient(),
+					getString(R.string.achievement_40_epm));
+		} 
+		if (mSolvedCount >= 50) {
+			Games.Achievements.unlock(getApiClient(),
+					getString(R.string.achievement_50_epm));
+		}
+
 		// Open leaderboard
 		showLeaderboard();
 
@@ -603,15 +633,16 @@ public class MainActivity extends BaseGameActivity implements
 		} else
 			beginUserInitiatedSignIn();
 	}
-	
+
 	/**
 	 * Opens achievements.
 	 */
 	private void showAchievements() {
 		if (isSignedIn()) {
-			startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),
+			startActivityForResult(
+					Games.Achievements.getAchievementsIntent(getApiClient()),
 					RC_SHOWACHIEVEMENTS);
-		} else 
+		} else
 			beginUserInitiatedSignIn();
 	}
 
