@@ -593,7 +593,7 @@ public class MainActivity extends BaseGameActivity implements
 
 	private void doSaveScore() {
 		Games.Leaderboards.submitScore(getApiClient(),
-				getString(R.string.leaderboard_id), mSolvedCount);
+				getString(R.string.leaderboard_top_users), mSolvedCount);
 
 		// Unlock the achievements
 		if (mSolvedCount >= 10) {
@@ -628,7 +628,7 @@ public class MainActivity extends BaseGameActivity implements
 	private void showLeaderboard() {
 		if (isSignedIn()) {
 			startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
-					getApiClient(), getString(R.string.leaderboard_id)),
+					getApiClient(), getString(R.string.leaderboard_top_users)),
 					RC_SHOWLEADERBOARD);
 		} else
 			beginUserInitiatedSignIn();
